@@ -23,5 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
+node_modules
+package-lock.json
 Downloaded_Videos/
 .git_old/
