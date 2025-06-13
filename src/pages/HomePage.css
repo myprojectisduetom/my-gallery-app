@@ -83,12 +83,22 @@ body {
   font-size: 18px;
 }
 
+.carousel-media-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* maintain aspect ratio */
+  overflow: hidden;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000; /* or any fallback bg */
+}
+
 .carousel-media {
   width: 100%;
   height: 100%;
-  min-height: 200px;
-  max-height: 300px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .summary-section {
@@ -228,6 +238,10 @@ body {
   .carousel-media {
     max-height: 200px;
     object-fit: contain;
+  }
+
+  .carousel-media-wrapper {
+    aspect-ratio: 4 / 3;
   }
 
   .navbar-links {
