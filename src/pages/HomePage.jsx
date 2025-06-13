@@ -73,34 +73,36 @@ export default function HomePage() {
   const baseURL = "https://res.cloudinary.com/dwk1jl1bs";
 
   const renderCarousels = (grouped) => (
-  <div className="carousel-grid">
+  <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "2rem", padding: "1rem" }}>
     {Object.entries(grouped).map(([subject, items], idx) => {
       const filteredItems = items.filter((item) => {
         const filename = item.filePath.split("/").pop().replace(/\.[^/.]+$/, "");
         return publicIdMap[filename];
       });
 
-      // Skip carousel if no media items are available
       if (filteredItems.length === 0) return null;
 
       return (
         <div
           key={idx}
-          className="carousel-card"
-          role="button"
-          tabIndex={0}
+          style={{
+            width: "300px",
+            backgroundColor: "white",
+            borderRadius: "12px",
+            boxShadow: "0 0 8px rgba(0, 0, 0, 0.12)",
+            padding: "10px",
+            cursor: "pointer",
+          }}
           onClick={() => goToGallery(subject)}
-          onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && goToGallery(subject)}
         >
-          <h2 className="carousel-title">{subject}</h2>
-
+          <h2 style={{ textAlign: "center" }}>{subject}</h2>
           <Swiper
             slidesPerView={1}
             autoplay={{ delay: 3000, disableOnInteraction: false }}
             loop
             navigation
             modules={[Autoplay, Navigation]}
-            style={{ width: "100%", minHeight: "200px", maxHeight: "300px" }}
+            style={{ width: "100%", height: "220px" }}
           >
             {filteredItems.map((item, idx2) => {
               const filename = item.filePath.split("/").pop().replace(/\.[^/.]+$/, "");
@@ -108,30 +110,25 @@ export default function HomePage() {
 
               return (
                 <SwiperSlide key={idx2}>
-  <div className="carousel-card">
-    <div className="carousel-media-wrapper">
-      {item.type_of_implementation === "Video" ? (
-        <video
-          src={`${baseURL}/video/upload/${publicId}.mp4`}
-          className="carousel-media"
-          muted
-          controls
-        />
-      ) : (
-        <img
-          src={`${baseURL}/image/upload/${publicId}.jpg`}
-          alt={item.topic}
-          onError={(e) => {
-            e.target.onerror = null;
-            e.target.src = `${baseURL}/image/upload/${publicId}.png`;
-          }}
-          className="carousel-media"
-        />
-      )}
-    </div>
-    <div className="carousel-title">{item.topic}</div>
-  </div>
-</SwiperSlide>
+                  {item.type_of_implementation === "Video" ? (
+                    <video
+                      src={`${baseURL}/video/upload/${publicId}.mp4`}
+                      muted
+                      controls
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
+                  ) : (
+                    <img
+                      src={`${baseURL}/image/upload/${publicId}.jpg`}
+                      alt={item.topic}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = `${baseURL}/image/upload/${publicId}.png`;
+                      }}
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
+                  )}
+                </SwiperSlide>
               );
             })}
           </Swiper>
@@ -139,8 +136,7 @@ export default function HomePage() {
       );
     })}
   </div>
-);           
-
+);
   return (
     <div>
       <nav className="navbar">
