@@ -89,8 +89,6 @@ body {
   min-height: 200px;
   max-height: 300px;
   object-fit: cover;
-  border-radius: 10px;
-  background-color: #ddd; /* fallback in case image/video fails */
 }
 
 .summary-section {
@@ -225,6 +223,11 @@ body {
   .carousel-card {
     width: 100%;
     box-sizing: border-box;
+  }
+
+  .carousel-media {
+    max-height: 200px;
+    object-fit: contain;
   }
 
   .navbar-links {
