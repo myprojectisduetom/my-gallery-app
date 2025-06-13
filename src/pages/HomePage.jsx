@@ -108,7 +108,6 @@ export default function HomePage() {
 
               return (
                 <SwiperSlide key={idx2}>
-                  <div className="carousel-media-wrapper">
                     {item.type_of_implementation === "Video" ? (
                       <video
                       src={`${baseURL}/video/upload/${publicId}.mp4`}
@@ -127,7 +126,6 @@ export default function HomePage() {
                     className="carousel-media"
                   />
                   )}
-                  </div>
                 </SwiperSlide>
               );
             })}
