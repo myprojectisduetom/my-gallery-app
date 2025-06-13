@@ -189,10 +189,58 @@ body {
   background-color: rgba(200, 200, 200, 0.4);  /* Darker on hover */
 }
 
-/* Optional: remove arrows on smaller screens */
-@media (max-width: 600px) {
-  .swiper-button-next,
-  .swiper-button-prev {
-    display: none;
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 15px;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-header {
+    width: 90%;
+    font-size: 20px;
+    padding: 15px 20px;
+  }
+
+  .carousel-grid {
+    padding: 10px 20px;
+    gap: 20px;
+  }
+
+  .summary-section,
+  .contact-section {
+    width: 90%;
+    padding: 25px;
+  }
+
+  .summary-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .summary-card {
+    width: 80%;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+
+  .contact-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .contact-form,
+  .contact-info {
+    width: 100%;
+  }
+
+  .carousel-media {
+    height: 220px;
   }
 }
