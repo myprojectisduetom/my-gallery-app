@@ -100,7 +100,7 @@ export default function HomePage() {
             loop
             navigation
             modules={[Autoplay, Navigation]}
-            style={{ width: "100%", height: "300px" }}
+            style={{ width: "100%", minHeight: "200px", maxHeight: "300px" }}
           >
             {filteredItems.map((item, idx2) => {
               const filename = item.filePath.split("/").pop().replace(/\.[^/.]+$/, "");

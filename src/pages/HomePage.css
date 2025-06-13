@@ -85,9 +85,12 @@ body {
 
 .carousel-media {
   width: 100%;
-  height: 300px;
+  height: 100%;
+  min-height: 200px;
+  max-height: 300px;
   object-fit: cover;
   border-radius: 10px;
+  background-color: #ddd; /* fallback in case image/video fails */
 }
 
 .summary-section {
@@ -184,6 +187,7 @@ body {
   height: 40px;
   font-weight: bold;
   transition: background-color 0.3s;
+  z-index: 10;
 }
 
 .swiper-button-next:hover,
@@ -241,6 +245,7 @@ body {
 
   .contact-wrapper {
     flex-direction: column;
+    gap: 20px; /* add spacing between form and info */
   }
 
   .contact-form,
@@ -248,9 +253,31 @@ body {
     width: 100%;
   }
 
+  .contact-form {
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
   .contact-form input,
   .contact-form textarea {
     width: 100%;
+    padding: 10px;
+    font-size: 16px;
     box-sizing: border-box;
   }
+
+  .contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .contact-form button {
+    width: 100%;
+    font-size: 16px;
+  }
 }
+
