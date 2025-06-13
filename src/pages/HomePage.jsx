@@ -108,25 +108,30 @@ export default function HomePage() {
 
               return (
                 <SwiperSlide key={idx2}>
-                    {item.type_of_implementation === "Video" ? (
-                      <video
-                      src={`${baseURL}/video/upload/${publicId}.mp4`}
-                      className="carousel-media"
-                      muted
-                      controls
-                      />
-                    ) : (
-                    <img
-                    src={`${baseURL}/image/upload/${publicId}.jpg`}
-                    alt={item.topic}
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = `${baseURL}/image/upload/${publicId}.png`;
-                    }}
-                    className="carousel-media"
-                  />
-                  )}
-                </SwiperSlide>
+  <div className="carousel-card">
+    <div className="carousel-media-wrapper">
+      {item.type_of_implementation === "Video" ? (
+        <video
+          src={`${baseURL}/video/upload/${publicId}.mp4`}
+          className="carousel-media"
+          muted
+          controls
+        />
+      ) : (
+        <img
+          src={`${baseURL}/image/upload/${publicId}.jpg`}
+          alt={item.topic}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = `${baseURL}/image/upload/${publicId}.png`;
+          }}
+          className="carousel-media"
+        />
+      )}
+    </div>
+    <div className="carousel-title">{item.topic}</div>
+  </div>
+</SwiperSlide>
               );
             })}
           </Swiper>
