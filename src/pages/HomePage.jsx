@@ -184,36 +184,35 @@ export default function HomePage() {
           </div>
 
           <form
-            className="contact-form"
-            onSubmit={(e) => {
-              e.preventDefault();
-              const formData = new FormData(e.target);
-              const payload = Object.fromEntries(formData.entries());
-              fetch("https://script.google.com/macros/s/AKfycbxukCX_aS-zfnSxLnVOW9KdeEh2KMnNYR5t6QbYWGujihrCvomgE-GYMspGKUQN-2Jt/exec", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload),
+          className="contact-form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            
+            fetch("https://script.google.com/macros/s/AKfycbxukCX_aS-zfnSxLnVOW9KdeEh2KMnNYR5t6QbYWGujihrCvomgE-GYMspGKUQN-2Jt/exec", {
+              method: "POST",
+              body: formData, // sending as form data (no need for headers or JSON)
               })
-                .then((res) => res.json())
-                .then((data) => {
-                  if (data.result === "success") {
-                    alert("Message sent successfully!");
-                    e.target.reset();
-                  } else {
-                    alert("Something went wrong: " + (data.message || "Unknown error"));
-                  }
-                })
-                .catch((err) => {
-                  console.error(err);
-                  alert("Failed to send message. Try again later.");
-                });
-            }}
-          >
-            <input name="name" type="text" placeholder="Your Name" required />
-            <input name="email" type="email" placeholder="Your Email" required />
-            <textarea name="message" rows="5" placeholder="Your Message" required />
-            <button type="submit">Send</button>
-          </form>
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.result === "success") {
+                  alert("Message sent successfully!");
+                  e.target.reset();
+                } else {
+                  alert("Something went wrong: " + (data.message || "Unknown error"));
+                }
+              })
+              .catch((err) => {
+                console.error(err);
+                alert("Failed to send message. Try again later.");
+              });
+              }}
+              >
+                <input name="name" type="text" placeholder="Your Name" required />
+                <input name="email" type="email" placeholder="Your Email" required />
+                <textarea name="message" rows="5" placeholder="Your Message" required />
+                <button type="submit">Send</button>
+            </form>
         </div>
       </div>
     </div>
