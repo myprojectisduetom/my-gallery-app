@@ -5,13 +5,13 @@ body {
   margin: 0;
   background-color: #f8f9fa;
   color: #333;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 .navbar {
   color: #e6f0ff;
   background-color: #6699cc;
-  display: "flex";
-  display: flex;
+  display: flex; /* fixed: removed invalid quoted version */
   justify-content: space-between;
   padding: 15px 25px;
   align-items: center;
@@ -52,7 +52,8 @@ body {
   background-color: #003366;
   padding: 20px 30px;
   border-radius: 16px;
-  width: 800px;
+  width: 90%; /* updated from 800px */
+  max-width: 800px; /* optional limit for large screens */
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -95,8 +96,8 @@ body {
   margin: 40px auto;
   text-align: center;
   border-radius: 16px;
-  width: 70%; /* reduce from 90% to 70% */
-  max-width: 1000px; /* optional: keep it from stretching too wide on large screens */
+  width: 70%;
+  max-width: 1000px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
 }
 
@@ -127,8 +128,8 @@ body {
   background-color: #f1f5fb;
   margin: 40px auto;
   border-radius: 16px;
-  width: 70%; /* reduce from 90% to 70% */
-  max-width: 1000px; /* optionally restrict max size */
+  width: 70%;
+  max-width: 1000px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
 }
 
@@ -176,8 +177,8 @@ body {
 /* Swiper default navigation buttons */
 .swiper-button-next,
 .swiper-button-prev {
-  background-color: rgba(200, 200, 200, 0.2);  /* Light gray, semi-transparent */
-  color: #333;  /* Arrow color */
+  background-color: rgba(200, 200, 200, 0.2);
+  color: #333;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -187,21 +188,19 @@ body {
 
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
-  background-color: rgba(200, 200, 200, 0.4);  /* Darker on hover */
+  background-color: rgba(200, 200, 200, 0.4);
 }
-
 
 /* === Mobile Responsive Fixes === */
 @media (max-width: 768px) {
-  /* Fix Hero Header font size */
   .hero-header {
     font-size: 6vw !important;
     text-align: center;
     padding: 20px 10px;
     word-break: break-word;
+    width: 90%;
   }
 
-  /* Fix Summary Section */
   .summary-cards {
     flex-direction: column !important;
     align-items: stretch !important;
@@ -224,7 +223,6 @@ body {
     box-sizing: border-box;
   }
 
-  /* Fix navbar spacing */
   .navbar-links {
     flex-direction: column;
     align-items: center;
@@ -249,5 +247,10 @@ body {
   .contact-info {
     width: 100%;
   }
-}
 
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
