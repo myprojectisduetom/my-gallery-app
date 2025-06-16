@@ -42,14 +42,15 @@ function GalleryPage() {
           return null;
         }
         
-        const cloudinaryUrl = `https://res.cloudinary.com/${cloudName}/${
-          isVideo ? "video" : "image"
-        }/upload/${publicId}`;
-        return {
-          ...item,
-          cloudinaryUrl,
-        };
-      })
+        const cloudinaryUrl = isVideo
+              ? `https://res.cloudinary.com/${cloudName}/video/upload/so_1,w_600,h_400,c_fill/${publicId}.jpg` // updated here
+              : `https://res.cloudinary.com/${cloudName}/image/upload/${publicId}`;
+
+            return {
+              ...item,
+              cloudinaryUrl,
+            };
+        })
       
       .filter(Boolean); // remove nulls
 
